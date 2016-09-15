@@ -106,8 +106,11 @@ public class CustomProgress extends TextView {
             width = 0;
             resetToZero = false;
             invalidate();
-        } else if (width < maxWidth) {
+        } else if (width < maxWidth && maxWidth - width >= speed) {
             width += this.speed;
+            invalidate();
+        } else {
+            width = maxWidth;
             invalidate();
         }
     }

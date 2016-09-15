@@ -37,9 +37,10 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
     @Override
     public void onBindViewHolder(UserAdapter.UserViewHolder holder, int position) {
         UserStatisticData values = mStatisticList.get(position);
+        CustomProgress progress = holder.progressBar;
 
-        holder.progressBar.setMaximumPercentage(values.getPercent());
-        holder.progressBar.setText(values.getNutrient());
+        progress.setMaximumPercentage(values.getPercent());
+        progress.setText(values.getNutrient());
         holder.percent.setText((int)(values.getPercent()*100) + "%");
 
     }
