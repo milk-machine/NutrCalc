@@ -1,40 +1,40 @@
-package com.milkmachine.nutrcalc.data;
+package com.milkmachine.nutrcalc.ui.views;
 
 /**
- The MIT License (MIT)
- Copyright (c) 2014 Niko Yuwono
- Permission is hereby granted, free of charge, to any person obtaining a copy
- of this software and associated documentation files (the "Software"), to deal
- in the Software without restriction, including without limitation the rights
- to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- copies of the Software, and to permit persons to whom the Software is
- furnished to do so, subject to the following conditions:
- The above copyright notice and this permission notice shall be included in all
- copies or substantial portions of the Software.
- THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- SOFTWARE.
+ * The MIT License (MIT)
+ * Copyright (c) 2014 Niko Yuwono
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
  **/
 
-        import android.content.Context;
-        import android.graphics.Canvas;
-        import android.graphics.Color;
-        import android.graphics.drawable.ShapeDrawable;
-        import android.graphics.drawable.shapes.RectShape;
-        import android.graphics.drawable.shapes.RoundRectShape;
-        import android.graphics.drawable.shapes.Shape;
-        import android.os.Build;
-        import android.util.AttributeSet;
-        import android.view.Gravity;
-        import android.widget.TextView;
+import android.content.Context;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.drawable.ShapeDrawable;
+import android.graphics.drawable.shapes.RectShape;
+import android.graphics.drawable.shapes.RoundRectShape;
+import android.graphics.drawable.shapes.Shape;
+import android.os.Build;
+import android.util.AttributeSet;
+import android.view.Gravity;
+import android.widget.TextView;
 
-        import com.milkmachine.nutrcalc.R;
+import com.milkmachine.nutrcalc.R;
 
-        import java.util.Arrays;
+import java.util.Arrays;
 
 public class CustomProgress extends TextView {
 
@@ -77,15 +77,15 @@ public class CustomProgress extends TextView {
         // default color
         progressColor = getResources().getColor(R.color.primary);
         progressBackgroundColor = getResources().getColor(R.color.primary_light);
-        progressShape=SHAPE_ROUNDED_RECTANGLE;
-        cornerRadius=10.0f;
+        progressShape = SHAPE_ROUNDED_RECTANGLE;
+        cornerRadius = 10.0f;
     }
 
     //View Lifecycle
 
     @Override
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
-        if(changed) {
+        if (changed) {
             initView();
         }
     }
@@ -95,16 +95,19 @@ public class CustomProgress extends TextView {
         super.onDraw(canvas);
         progressDrawable.setBounds(0, 0, width, this.getHeight());
         progressDrawable.draw(canvas);
-        if(isShowingPercentage()) {
-            this.setText(getCurrentPercentage()+"%");
+
+        if (isShowingPercentage()) {
+            this.setText(getCurrentPercentage() + "%");
         }
+
+
         //if the we want to reset to 0
-        if(resetToZero) {
+        if (resetToZero) {
             width = 0;
             resetToZero = false;
             invalidate();
-        } else if(width < maxWidth) {
-            width+= this.speed;
+        } else if (width < maxWidth) {
+            width += this.speed;
             invalidate();
         }
     }
@@ -131,7 +134,7 @@ public class CustomProgress extends TextView {
         //Progress
         progressDrawable = new ShapeDrawable(progressShapeDrawable);
         progressDrawable.getPaint().setColor(progressColor);
-        if((this.getText().length() > 0) || isShowingPercentage()) {
+        if ((this.getText().length() > 0) || isShowingPercentage()) {
             progressDrawable.setAlpha(100);
         }
 
@@ -148,7 +151,7 @@ public class CustomProgress extends TextView {
         this.maxWidth = (int) (this.getWidth() * maximumPercentage);
 
         //Percentage
-        if(isShowingPercentage()) {
+        if (isShowingPercentage()) {
             this.setTextSize(20);
             this.setTextColor(Color.WHITE);
             this.setGravity(Gravity.CENTER);
@@ -159,6 +162,7 @@ public class CustomProgress extends TextView {
 
     /**
      * Set the progress color
+     *
      * @param color
      */
     public void setProgressColor(int color) {
@@ -167,6 +171,7 @@ public class CustomProgress extends TextView {
 
     /**
      * Set the background color
+     *
      * @param color
      */
     public void setProgressBackgroundColor(int color) {
@@ -182,6 +187,7 @@ public class CustomProgress extends TextView {
 
     /**
      * Set the maximum percentage for the progress
+     *
      * @param percentage
      */
     public void setMaximumPercentage(float percentage) {
@@ -190,10 +196,11 @@ public class CustomProgress extends TextView {
 
     /**
      * Get current percentage based on current width
+     *
      * @return
      */
     public int getCurrentPercentage() {
-        return (int) Math.ceil((width/(maxWidth*1.0f))*100);
+        return (int) Math.ceil((width / (maxWidth * 1.0f)) * 100);
     }
 
     /**
@@ -205,6 +212,7 @@ public class CustomProgress extends TextView {
 
     /**
      * Set the shape of custom progress to rounded rectangle
+     *
      * @param cornerRadius radius of the corner
      */
     public void useRoundedRectangleShape(float cornerRadius) {
@@ -215,6 +223,7 @@ public class CustomProgress extends TextView {
     /**
      * If this returns true the custom progress
      * will show progress based on getCurrentPercentage()
+     *
      * @return true for showing percentage false for not showing anything
      */
     public boolean isShowingPercentage() {
@@ -223,18 +232,22 @@ public class CustomProgress extends TextView {
 
     /**
      * Set if the custom progress will show percentage or not
+     *
      * @param showingPercentage true for showing percentage false for not showing anything
      */
     public void setShowingPercentage(boolean showingPercentage) {
         this.showingPercentage = showingPercentage;
     }
+
     /**
      * Set the speed of the movement of the progress
+     *
      * @param speed as an int it should range from [1,100]
      */
-    public void setSpeed(int speed){
+    public void setSpeed(int speed) {
         this.speed = speed;
     }
+
     /**
      * call the function when you want to update view
      */
@@ -245,7 +258,7 @@ public class CustomProgress extends TextView {
     }
 
     public int getPercentage() {
-        int percentage =(int) Math.ceil(maximumPercentage*100);
+        int percentage = (int) Math.ceil(maximumPercentage * 100);
         return percentage;
     }
 }

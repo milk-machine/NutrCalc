@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_coordinator_container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:ignore="contentDescription">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.v7.widget.CardView
+            android:layout_width="240dp"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:background="@color/icons"
+            android:padding="@dimen/spacing_medial_24"
+            app:cardCornerRadius="4dp"
+            app:cardElevation="8dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/spacing_normal_16"
+                    android:orientation="horizontal"
+                    android:paddingTop="@dimen/spacing_medium_32">
+
+                    <View
+                        android:layout_width="@dimen/signin_view_width"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="@dimen/signin_view_height"
+                        android:background="@color/accent"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:allowUndo="false"
+                        android:paddingBottom="@dimen/spacing_small_8"
+                        android:paddingTop="@dimen/spacing_small_8"
+                        android:text="@string/sign_in"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:textStyle="bold"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:orientation="vertical"
+                    android:paddingBottom="@dimen/spacing_medial_24"
+                    android:paddingLeft="@dimen/spacing_medial_24"
+                    android:paddingRight="@dimen/spacing_medial_24">
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <EditText
+                            android:id="@+id/login_email"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:ems="10"
+                            android:hint="@string/e_mail"
+                            android:inputType="textEmailAddress"/>
+                    </android.support.design.widget.TextInputLayout>
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <EditText
+                            android:id="@+id/login_password"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/spacing_normal_16"
+                            android:ems="10"
+                            android:hint="@string/password"
+                            android:inputType="textPassword"/>
+                    </android.support.design.widget.TextInputLayout>
+
+                    <Button
+                        style="@style/AppTheme.Button.Blue"
+                        android:id="@+id/login_button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="@dimen/spacing_normal_16"
+                        android:minWidth="126dp"
+                        android:text="@string/sign_in"
+                        android:theme="@style/AppTheme.Button.Blue"/>
+
+                    <TextView
+                        android:id="@+id/login_forgot_password"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="@dimen/spacing_normal_16"
+                        android:text="@string/forgot_password"
+                        android:textAppearance="?android:attr/textAppearanceMedium"/>
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
+    </RelativeLayout>
+</android.support.design.widget.CoordinatorLayout>

@@ -1,7 +1,5 @@
 package com.milkmachine.nutrcalc.ui.activities;
 
-import android.app.ActionBar;
-import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -21,13 +19,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.milkmachine.nutrcalc.R;
-import com.milkmachine.nutrcalc.data.CustomProgress;
+import com.milkmachine.nutrcalc.ui.views.CustomProgress;
 import com.milkmachine.nutrcalc.ui.fragments.StatisticFragment;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-
-    private CustomProgress progress;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -99,17 +95,11 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
+        if (id == R.id.statistic_drawer_item) {
             // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
+        } else if (id == R.id.history_drawer_item) {
 
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
+        } else if (id == R.id.account_drawer_item) {
 
         }
 

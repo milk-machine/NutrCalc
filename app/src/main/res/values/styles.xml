@@ -17,4 +17,9 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
 
+    <style parent="Base.Widget.AppCompat.Button" name="AppTheme.Button.Blue">
+    <item name="colorButtonNormal">@color/accent</item>
+    <item name="android:textColor">@color/icons</item>
+
+</style>
 </resources>
